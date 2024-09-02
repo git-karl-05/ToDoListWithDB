@@ -4,24 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ToDoList {
-    private List<Task> toDoList = new ArrayList<>();
+    private List<Task> tasks;
 
-    //Methods that are needed = Add, Remove, Update, Show List
+    public ToDoList() {
+        tasks = new ArrayList<>();
+    }
+
     public void addTask(Task task) {
-        toDoList.add(task);
+        tasks.add(task);
     }
     public void removeTask(Task task) {
-        toDoList.remove(task);
-    }
-    public void updateTask(Task oldTask, Task newTask) {
-        int index = toDoList.indexOf(oldTask);
-        if (index != -1) {
-            toDoList.set(index, newTask);
+        if (tasks.contains(task)) {
+            tasks.remove(task);
         } else {
-            System.out.println("Task not found in the list.");
+            System.out.println("Task not found");
         }
     }
-    public List<Task> getToDoList() {
-        return toDoList;
+
+    public void printTaskList() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks found");
+        } else {
+            for (Task task : tasks) {
+                System.out.println(task);
+            }
+        }
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void completeTask(Task task) {
+        if (tasks.contains(task)) {
+            task.setCompleted(true);
+            System.out.println("Task marked as completed");
+        } else {
+            System.out.println("Task not found");
+        }
     }
 }

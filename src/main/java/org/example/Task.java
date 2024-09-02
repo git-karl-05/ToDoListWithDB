@@ -1,44 +1,50 @@
 package org.example;
 
 public class Task {
-    //private fields to store task properties
-    private String taskName;
-    private String taskDescription;
+    private String name;
+    private String description;
     private boolean isCompleted;
 
-
-    //constructor to create a Task with only a name
-    public Task (String taskName) {
-        this.taskName = taskName;
-        this.taskDescription = "";
-        this.isCompleted = false;
-    }
-    //constructor to create a Task with a name and description
-    public Task (String taskName, String taskDescription) {
-        this.taskName = taskName;
-        this.taskDescription = taskDescription;
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
         this.isCompleted = false;
     }
 
-    //Getter methods
+    public Task(String name) {
+        this.name = name;
+        this.description = "N/A";
+        this.isCompleted = false;
+    }
+
     public String getName() {
-        return taskName;
+        return name;
     }
     public String getDescription() {
-        return taskDescription;
+        return description;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public boolean isCompleted() {
         return isCompleted;
     }
 
-    //Setter methods
-    public void setName(String taskName) {
-        this.taskName = taskName;
+    public void setCompleted(boolean completed) {
+        this.isCompleted = completed;
     }
-    public void setDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
-    }
-    public void setCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
+
+
+
+    @Override
+    public String toString() {
+        return "{Task Name = " + name + ", Description = " + description + ", " +
+                "Completed? = " + isCompleted + '}';
     }
 }
